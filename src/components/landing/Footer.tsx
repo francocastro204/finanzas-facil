@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  className?: string;
+}
+
 const navigation = {
   main: [
     { name: 'Acerca de', href: '#' },
@@ -12,7 +16,7 @@ const navigation = {
     {
       name: 'Instagram',
       href: '#',
-      icon: (props: any) => (
+      icon: (props: IconProps) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
@@ -47,7 +51,7 @@ export default function Footer() {
               className="text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              <item.icon className="h-6 w-6" aria-hidden={true} />
             </Link>
           ))}
         </div>

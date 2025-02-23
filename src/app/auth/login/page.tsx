@@ -17,22 +17,21 @@ export default function LoginPage() {
     setError('');
 
     const formData = new FormData(e.currentTarget);
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
 
     try {
       const result = await signIn('credentials', {
-        email,
-        password,
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
         redirect: false,
       });
 
       if (result?.error) {
         setError('Credenciales inválidas');
-      } else {
-        router.push('/dashboard');
+        return;
       }
-    } catch (error) {
+      
+      router.push('/dashboard');
+    } catch {
       setError('Ocurrió un error al iniciar sesión');
     } finally {
       setIsLoading(false);
@@ -42,11 +41,17 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     setIsLoading(true);
     try {
-      await signIn('google', {
+      const result = await signIn('google', {
         callbackUrl: '/dashboard',
+        redirect: false,
       });
-    } catch (error) {
+      
+      if (result?.error) {
+        setError('Error al iniciar sesión con Google');
+      }
+    } catch {
       setError('Error al iniciar sesión con Google');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -54,11 +59,17 @@ export default function LoginPage() {
   const handleAppleLogin = async () => {
     setIsLoading(true);
     try {
-      await signIn('apple', {
+      const result = await signIn('apple', {
         callbackUrl: '/dashboard',
+        redirect: false,
       });
-    } catch (error) {
+      
+      if (result?.error) {
+        setError('Error al iniciar sesión con Apple');
+      }
+    } catch {
       setError('Error al iniciar sesión con Apple');
+    } finally {
       setIsLoading(false);
     }
   };
