@@ -31,7 +31,7 @@ const navigation = {
   ],
 };
 
-export default function Footer(): JSX.Element {
+const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
@@ -62,4 +62,6 @@ export default function Footer(): JSX.Element {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

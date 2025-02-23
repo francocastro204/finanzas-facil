@@ -27,7 +27,7 @@ import {
       icon: ArrowPathIcon,
     },
   ];
-  
+
   export default function Features() {
     return (
       <div className="py-24 bg-gray-50">
@@ -40,7 +40,7 @@ import {
               Herramientas intuitivas para gestionar tu dinero de manera inteligente
             </p>
           </div>
-  
+
           <div className="mt-20">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => (
