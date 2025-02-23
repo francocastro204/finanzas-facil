@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -30,7 +31,7 @@ const navigation = {
   ],
 };
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
