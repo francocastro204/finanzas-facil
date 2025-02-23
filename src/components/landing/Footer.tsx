@@ -6,17 +6,10 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 const navigation = {
-  main: [
-    { name: 'Acerca de', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Empleos', href: '#' },
-    { name: 'Prensa', href: '#' },
-    { name: 'Socios', href: '#' },
-  ],
   social: [
     {
       name: 'Instagram',
-      href: '#',
+      href: 'https://www.instagram.com/finanzas_facil/',
       icon: (props: IconProps) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -27,7 +20,6 @@ const navigation = {
         </svg>
       ),
     },
-    // Puedes agregar más redes sociales aquí
   ],
 };
 
@@ -35,20 +27,13 @@ const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-        <nav className="flex flex-wrap justify-center">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="px-6 py-2">
-              <Link href={item.href} className="text-gray-500 hover:text-gray-900">
-                {item.name}
-              </Link>
-            </div>
-          ))}
-        </nav>
         <div className="mt-8 flex justify-center space-x-6">
           {navigation.social.map((item) => (
             <Link
               key={item.name}
               href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">{item.name}</span>
