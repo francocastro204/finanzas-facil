@@ -1,9 +1,33 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import AppleProvider from 'next-auth/providers/apple';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { authAPI } from '@/services/auth';
 
 const handler = NextAuth({
   providers: [
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        try {
+          const response = await authAPI.login({
+            email: credentials?.email || '',
+            password: credentials?.password || '',
+          });
+
+          if (response.user) {
+            return response.user;
+          }
+          return null;
+        } catch (error) {
+          return null;
+        }
+      }
+    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,

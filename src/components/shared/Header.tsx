@@ -56,20 +56,16 @@ const Header = () => {
 
 				{/* Botones de acción desktop */}
 				<div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => (window.location.href = "/auth/login")}
-					>
-						Iniciar sesión
-					</Button>
-					<Button
-						variant="primary"
-						size="sm"
-						onClick={() => (window.location.href = "/auth/register")}
-					>
-						Crear cuenta
-					</Button>
+					<Link href="/auth/login">
+						<Button variant="outline" size="sm">
+							Iniciar sesión
+						</Button>
+					</Link>
+					<Link href="/auth/register">
+						<Button variant="primary" size="sm">
+							Crear cuenta
+						</Button>
+					</Link>
 				</div>
 			</nav>
 
@@ -113,20 +109,16 @@ const Header = () => {
 								))}
 							</div>
 							<div className="py-6 space-y-3">
-								<Button
-									variant="outline"
-									fullWidth
-									onClick={() => (window.location.href = "/auth/login")}
-								>
-									Iniciar sesión
-								</Button>
-								<Button
-									variant="primary"
-									fullWidth
-									onClick={() => (window.location.href = "/auth/register")}
-								>
-									Registrarse
-								</Button>
+								<Link href="/auth/login">
+									<Button variant="outline" fullWidth>
+										Iniciar sesión
+									</Button>
+								</Link>
+								<Link href="/auth/register">
+									<Button variant="primary" fullWidth>
+										Registrarse
+									</Button>
+								</Link>
 							</div>
 						</div>
 					</div>
